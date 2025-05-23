@@ -5,7 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weekly Gym Planner</title>
-  <style>
+  
+    <style>
+      section {
+        scroll-margin-top: 120px;
+      }
+
+      .gallery img {
+        max-width: 220px;
+        width: 100%;
+        border: 2px solid #ffaa00;
+        border-radius: 8px;
+      }
+    
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -49,6 +61,21 @@
       color: #00aaff;
     }
     .gallery {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+    }
+    .gallery img {
+      flex: 0 0 auto;
+      width: 300px;
+      height: auto;
+      border: 2px solid #ffaa00;
+      border-radius: 8px;
+    }
+
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -109,9 +136,32 @@
       }
     }
   </style>
-</head>
-<body>
 
+    
+    <style>
+      section {
+        scroll-margin-top: 120px;
+      }
+
+      .gallery img {
+        max-width: 220px;
+        width: 100%;
+        border: 2px solid #ffaa00;
+        border-radius: 8px;
+      }
+        </style>
+    
+    <style>
+      nav a.active {
+        border-bottom: 2px solid #ffaa00;
+        padding-bottom: 2px;
+      }
+    </style>
+    </head>
+
+
+<body>
+  
 <header>
   <div style="display: flex; align-items: center; gap: 10px;">
     <img src="images/app-icon.png" alt="Weekly Gym Planner Logo" style="height: 40px; border-radius: 8px;">
@@ -146,7 +196,7 @@
   </div>
 </section>
 
-<section id="privacy">
+<section id="privacy" style="margin-top: 100px;">
   <h2>Privacy Policy</h2>
   <p>We don’t collect or track any personal information. The app works completely offline, without any ads, analytics, or hidden trackers. Your data stays private and local to your device.</p>
 </section>
@@ -179,6 +229,56 @@ function validateHoneypot() {
   return true;
 }
 </script>
+
+<script>
+  // Highlight active nav item on scroll
+  
+  const sections = document.querySelectorAll("section");
+
+  const navLinks = document.querySelectorAll("nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+<script>
+  // Highlight active nav item on scroll
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 </body>
+
+
 </html>
 
